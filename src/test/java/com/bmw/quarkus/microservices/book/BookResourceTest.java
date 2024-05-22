@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.startsWith;
 
 @QuarkusTest
 class BookResourceTest {
@@ -22,7 +23,7 @@ class BookResourceTest {
                 .body("title", is("Quarkus for Dummies"))
                 .body("author", is("John Doe"))
                 .body("year_of_publication", is(2021))
-                .body("isbn_13", is("will get from Number Microservice"))
+                .body("isbn_13", startsWith("13-:"))
                 .body("genre", is("Programming"));
     }
 }
